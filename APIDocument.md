@@ -63,8 +63,18 @@
 ]
 ```
 
+
+
 ## Thing 생성하기
+
+### Start line
+
+| Method | URL     | Description                |
+| ------ | ------- | -------------------------- |
+| POST   | /things | 새로운 Thing을 추가해준다. |
+
 ### Request
+
 ##### Headers
 | Content-Type                    | If-Modified-Since |
 | ------------------------------- | ----------------- |
@@ -72,13 +82,102 @@
 ##### Body
 | Name | Type | Description | Required|
 | -------- | -------- | -------- | -------- |
-|          |          |          |          |
-|          |          |          |          |
-|          |          |          |          |
-|          |          |          |          |
-|          |          |          |          |
+| id | Number | Thing의 고유한 id 값 |          |
+| title | String? | Thing의 제목 | Optional |
+| description | String? | Thing의 세부내용 | Optional |
+| state | String or Number | Thing의 상태 (기본 Todo) |          |
+| due_date | Number | Thing의 기한 |          |
+
+### Response Sample
+
+##### 성공: 200
+##### 실패
+```json
+400 Error
+{
+	"error": true,
+	"description": "The essential thing is missing."  
+}
+```
+
+
+
 ## Thing 수정하기
+
+### Start line
+
+| Method | URL         | Description            |
+| ------ | ----------- | ---------------------- |
+| PATCH  | /things/:id | 기존 Thing을 수정한다. |
+
+### Request
+
+##### Headers
+
+| Content-Type                    | If-Modified-Since |
+| ------------------------------- | ----------------- |
+| application/json; charset=utf-8 |                   |
+
+##### Body
+
+| Name        | Type             | Description              | Required |
+| ----------- | ---------------- | ------------------------ | -------- |
+| id          | Number           | Thing의 고유한 id 값     |          |
+| title       | String?          | Thing의 제목             | Optional |
+| description | String?          | Thing의 세부내용         | Optional |
+| state       | String? or Number? | Thing의 상태 (기본 Todo) | Optional |
+| modification_date  | Number    | Thing의 수정된 기한        |          |
+
+### Response Sample
+
+##### 성공: 200
+
+##### 실패
+
+```json
+400 Error
+{
+	"error": true,
+	"description": "The request is invalid."  
+}
+```
+```json
+404 Error
+{
+	"error": true,
+	"description": "Thing is Not Found."  
+}
+```
+
+
+
 
 ## Thing 삭제하기
 
+### Start line
 
+| Method | URL         | Description       |
+| ------ | ----------- | ----------------- |
+| DELETE | /things/:id | Thing을 삭제한다. |
+
+### Response Sample
+
+##### 성공: 200
+
+##### 실패
+
+```json
+400 Error
+{
+	"error": true,
+	"description": "The request is invalid."  
+}
+```
+
+```json
+404 Error
+{
+	"error": true,
+	"description": "Thing is Not Found."  
+}
+```

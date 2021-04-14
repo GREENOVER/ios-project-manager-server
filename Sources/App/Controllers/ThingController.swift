@@ -49,7 +49,7 @@ struct ThingController: RouteCollection {
                 if let dueDate = editThing.dueDate {
                     thing.dueDate = dueDate
                 }
-                things.save(on: req.db)
+                thing.save(on: req.db)
                 
                 let body = try jsonEncoder.encode(thing)
                 return Response(status: .ok, headers: ["Content-Type": "application/json; charset=utf-8"], body: .init(data: body))

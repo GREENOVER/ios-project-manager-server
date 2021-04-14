@@ -1,7 +1,7 @@
 import Vapor
 import Fluent
 
-struct EditItem: Content {
+struct EditThing: Content {
     let title: String?
     let description: String?
     let state: State?

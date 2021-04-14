@@ -22,10 +22,6 @@ final class Thing: Model, Content {
     @Timestamp(key: "updated_at", on: .create)
     var updatedAt: Date?
     
-    enum State: String, Codable {
-        case todo, doing, done
-    }
-    
     init() { }
     
     init(id: UUID? = nil,

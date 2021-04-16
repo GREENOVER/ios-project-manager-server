@@ -43,11 +43,12 @@
 
 #### Trouble Shooting👨‍🔧
 - 문제점: 로컬에서 해당 서버를 테스트해보기 위해 앱을 빌드해보는 과정에서 아래와 같은 런타임 에러가 나타나게 되었다. http://localhost:8080 에서 Get을 찍어보니 이상은 없는데 왜 이런 오류가 나타나게 되는것인지 문제였다.
-<img src = "https://github.com/GREENOVER/SwiftUI/blob/main/InXcode.png" width="50%" height="50%">
+<img src = "https://github.com/GREENOVER/ios-project-manager-server/blob/main/TroubleShootingImage/Trouble.png" width="50%" height="50%">
 
 - 원인: 해당 오류 메시지를 가지고 수소문하며 찾았는데 이유는 이전 해당 앱을 빌드하여 이미 로컬인 8080 서버가 실행이 되고 있어 중복으로 바인딩을 하려니 문제가 나타나는것이였다. 즉 이미 해당 로컬호스트 8080 서버를 사용하고 있는데 거기서 똑같은 로컬호스트를 서버로 동일하게 사용하려하니 이미 사용되고 있다고 에러가 나타나게 된것이다.
 
 - 해결방법: 중복으로 사용되고 있는 서버를 죽여주기 위해 아래와 같이 Activity Monitor (활성상태보기)에서 Run으로 검색하여 지금 해당 로컬호스트 서버를 물고 있는 2개의 run을 발견하였다. 이 run이 해당 로컬호스트를 점유하고 있는 메모리로 둘중 이전것이든 지금것이든 아니면 둘다 죽이고 다시 빌드를 하던하게되면 정상적으로 에러 메시지 없이 실행되었다.
-<img src = "https://github.com/GREENOVER/SwiftUI/blob/main/InSimulator.png" width="50%" height="50%">
+<img src = "https://github.com/GREENOVER/ios-project-manager-server/blob/main/TroubleShootingImage/ActivityMonitor_1.png" width="50%" height="50%">
+<img src = "https://github.com/GREENOVER/ios-project-manager-server/blob/main/TroubleShootingImage/ActivityMonitor_2.png" width="50%" height="50%">
 
 - 만약 Run이라는 프로세스 이름을 모르고 있을때는 프로세스 ID 즉 PID를 알면되는데 이 PID를 찾기 위해서는 터미널에서 ``` $ sudo lsof -i :8080 ``` 명령어를 통해 해당 프로세스가 실행되는 PID 번호를 찾아낼 수 있다. 그러면 위와 같이 활성상태보기 창에서 해당 PID를 찾아 종료해주면된다.

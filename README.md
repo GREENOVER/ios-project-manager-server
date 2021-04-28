@@ -51,5 +51,5 @@
 <img src = "https://github.com/GREENOVER/ios-project-manager-server/blob/main/TroubleShootingImage/ActivityMonitor_1.png" width="50%" height="50%">
 <img src = "https://github.com/GREENOVER/ios-project-manager-server/blob/main/TroubleShootingImage/ActivityMonitor_2.png" width="50%" height="50%">
 
-- 만약 Run이라는 프로세스 이름을 모르고 있을때는 프로세스 ID 즉 PID를 알면되는데 이 PID를 찾기 위해서는 터미널에서 ``` $ sudo lsof -i :8080 ``` 명령어를 통해 해당 프로세스가 실행되는 PID 번호를 찾아낼 수 있다. 그러면 위와 같이 활성상태보기 창에서 해당 PID를 찾아 종료해주면된다.
+- 만약 Run이라는 프로세스 이름을 모르고 있을때는 프로세스 ID 즉 PID를 알면되는데 이 PID를 찾기 위해서는 터미널에서 ``` $ sudo lsof -i :8080 ``` 명령어를 통해 해당 프로세스가 실행되는 PID 번호를 찾아낼 수 있다. 그러면 위와 같이 활성상태보기 창에서 해당 PID를 찾아 종료해주면된다!
 <img src = "https://github.com/GREENOVER/ios-project-manager-server/blob/main/TroubleShootingImage/Terminal.png" width="50%" height="50%">
